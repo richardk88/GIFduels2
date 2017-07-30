@@ -38,7 +38,7 @@ router.get('/new', (req, res) => {
 
   res.render(
     'gifs/new',
-    {userId},
+    {userId}
   );
 });
 //POST ROUTE *****NOT WORKING CORRECTLY******
@@ -96,7 +96,7 @@ router.get('/:gifId', (req, res) => {
         title: foundGif.title,
         imgUrl: foundGif.imgUrl,
         votes: foundGif.votes
-      },
+      }
     );
       
 }).catch((error) => {
