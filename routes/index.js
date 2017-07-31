@@ -36,4 +36,9 @@ router.get('/', function(req, res) {
     
 });
 
+// //Get Users Index
+// router.get('/users', (req, res) => {
+//   res.send("Dan is the best")
+// })
+
 module.exports = router;
