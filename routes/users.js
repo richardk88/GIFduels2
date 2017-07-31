@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
   const battleId = req.params.battleId;
   const userId = req.params.userId;
   Battle.findById(battleId).then((battle) => {
+    console.log(battleId);
   
 
 
@@ -44,7 +45,7 @@ router.get('/new', (req, res) => {
 // Post New User to Index
 router.post('/', (req, res) => {
   const battleId = req.params.battleId;
-  const userId = req.params.userId;
+
   const newUserInfo = req.body;
   let currentUser = [];
 
@@ -59,11 +60,12 @@ router.post('/', (req, res) => {
     console.log("SUCC");
     res.render("users/show", {
       battleId,
-      userId,
+      userId: currentUser[0]._id,
       userName: currentUser[0].userName,
       firstName: currentUser[0].firstName,
       lastName: currentUser[0].lastName,
-      email: currentUser[0].email
+      email: currentUser[0].email,
+      gifs: currentUser[0].gifs
     })
   }).catch((error) => {
     console.log(error);

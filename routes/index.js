@@ -45,29 +45,43 @@ router.get('/:battleId', (req, res) => {
   const battleId = req.params.battleId;
   var firstNumber;
   var secondNumber;
-
+  var thirdNumber;
+  var fourthNumber;
+//random index for users
   function randomNumber(arrayOne) {
     do {
       firstNumber = Math.floor(Math.random() * arrayOne.length);
       secondNumber = Math.floor(Math.random() * arrayOne.length);
+    //keep looping if both indices are the same
     } while (firstNumber === secondNumber);
   }
+  
+  //random index for gifs
+
   Battle.find({}).then((battles) => {
     // console.log(battles[0].playerOne.gifs[0].imgUrl);
     // res.send(battles[0].playerOne.gifs[0].imgUrl);
     // User.find({}).then()
+    
     randomNumber(battles[0].users);
+    const gifOne = battles[0].users[firstNumber].gifs
+    const gifTwo = battles[0].users[secondNumber].gifs
+    const gifOneIndex = Math.floor(Math.random() * gifOne.length);
+    const gifTwoIndex = Math.floor(Math.random() * gifTwo.length);
+    console.log(gifOne.length)
     res.render(
       'homepage/show', {
         battleId,
         playerOne: battles[0].users[firstNumber].userName,
         playerTwo: battles[0].users[secondNumber].userName,
-        gifOne: battles[0].users[0].gifs[0].imgUrl,
-        gifTwo: battles[0].users[1].gifs[0].imgUrl,
+        gifOne: battles[0].users[firstNumber].gifs[gifOneIndex].imgUrl,
+        gifTwo: battles[0].users[secondNumber].gifs[gifTwoIndex].imgUrl,
         
       }
 
     )
+  }).catch((error)=>{
+    console.log(error);
   })
 
 })

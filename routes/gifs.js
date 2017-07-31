@@ -49,10 +49,11 @@ router.post('/', (req, res) => {
     foundUser.gifs.push(newGif);
     battle.save();
     console.log('SUCCESS');
-    res.render('gifs/show', {
+    res.render('gifs/index', {
       battleId,
       userId,
       userName: foundUser.userName,
+      gifs: foundUser.gifs,
       title: newGif.title,
       imgUrl: newGif.imgUrl
     })
