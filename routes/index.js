@@ -29,8 +29,8 @@ router.get('/', function (req, res) {
       'homepage/index', {
         playerOne: battles[0].users[firstNumber].userName,
         playerTwo: battles[0].users[secondNumber].userName,
-        gifOne: battles[0].users[0].gifs[0].imgUrl,
-        gifTwo: battles[0].users[1].gifs[0].imgUrl,
+        gifOne: battles[0].users[firstNumber].gifs[0].imgUrl,
+        gifTwo: battles[0].users[secondNumber].gifs[0].imgUrl,
         battleId: battles[0].id
       }
 

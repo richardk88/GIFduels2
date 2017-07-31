@@ -2,9 +2,9 @@
 
 {{#each gifs}}
     
-    <div><a href="/users/{{../userId}}/gifs/{{this._id}}"><img src="{{this.imgUrl}}"></a></div>
+    <div><a href="/{{../battleId}}/users/{{../userId}}/gifs/{{this._id}}"><img src="{{this.imgUrl}}"></a></div>
    
 {{/each}}
-<div><a href="/users/{{userId}}/gifs/new">Add a New GIF</a></div>
-<div><a href="/users/{{userId}}">Go back to {{userName}}'s Profile</a></div>
+<div><a href="/{{battleId}}/users/{{userId}}/gifs/new">Add a New GIF</a></div>
+<div><a href="/{{battleId}}/users/{{userId}}">Go back to {{userName}}'s Profile</a></div>
 	

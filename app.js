@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/GIFduels2');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
-// const gifs = require('./routes/gifs')
+const gifs = require('./routes/gifs')
 
 
 const app = express();
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/:battleId/users', users);
-// app.use('/users/:userId/gifs', gifs);
+app.use('/:battleId/users/:userId/gifs', gifs);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,18 +14,21 @@ const Battle = require('../models/battle')
 //Get Users Index
 router.get('/', (req, res) => {
   const battleId = req.params.battleId;
-  Battle.find({}).then((battles) => {
-    console.log(battles[0].users);
+  const userId = req.params.userId;
+  Battle.findById(battleId).then((battle) => {
+  
 
 
     res.render(
       'users/index', {
-        users: battles[0].users,
+        users: battle.users,
         battleId
 
       }
     )
-  })
+  }).catch((error)=> {
+    console.log(error);
+  });
 });
 
 // Create User Form
@@ -65,7 +68,7 @@ router.post('/', (req, res) => {
   }).catch((error) => {
     console.log(error);
   });
-    console.log(currentUser);
+  console.log(currentUser);
 });
 
 // Show User route
@@ -93,7 +96,7 @@ router.get('/:userId', (req, res) => {
 });
 
 //Edit Form For User
-router.get('/:userId/edit', (req,res)=>{
+router.get('/:userId/edit', (req, res) => {
   const battleId = req.params.battleId;
   const userId = req.params.userId;
   console.log(battleId);
@@ -115,7 +118,7 @@ router.get('/:userId/edit', (req,res)=>{
 });
 
 //Update the User (PUT)
-router.put('/:userId', (req,res) => {
+router.put('/:userId', (req, res) => {
   const battleId = req.params.battleId;
   const userId = req.params.userId;
   console.log(battleId);
@@ -141,9 +144,30 @@ router.put('/:userId', (req,res) => {
       lastName: foundUser.lastName,
       email: foundUser.email
     });
- }).catch((error) => {
+  }).catch((error) => {
     console.log(error);
   });
 });
 
+//DELETE USER ROUTE
+router.get('/:userId/delete', (req, res) => {
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+
+  Battle.findById(battleId).then((battle) => {
+    battle.users.id(userId).remove();
+
+    return battle.save();
+  }).then(battle => {
+    res.render('users/index', {
+      battleId,
+      userId,
+      users: battle.users
+    });
+  }).catch((error) => {
+    console.log(error);
+  });
+
+  
+})
 module.exports = router;
