@@ -1,11 +1,9 @@
-
 <h1>USERS</h1>
 
 <ul>{{#each users}}
-	<li><a href="/users/{{this._id}}">{{this.userName}}</a></li>
-		
-{{/each}}
+	<li><a href="/{{../battleId}}/users/{{this._id}}">{{this.userName}}</a></li>
 
+	{{/each}}
+	<a href="/{{battleId}}/users/new">Create a new user</a>
 </ul>
-
-
+<a href="/{{battleId}}">Back to GIF Duels</a>

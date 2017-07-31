@@ -1,7 +1,6 @@
-<h1>
-    Edit User</h1>
+<h1>Edit User</h1>
 
-<form action="/users/{{userId}}?_method=PUT" method="POST">
+<form action="/{{battleId}}/users/{{userId}}?_method=PUT" method="POST">
     <input type="text" name="firstName" value="{{firstName}}">
     <input type="text" name="lastName" value="{{lastName}}">
     <input type="text" name="userName" value="{{userName}}">

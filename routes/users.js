@@ -1,6 +1,7 @@
-
 const express = require('express');
-const router = express.Router({mergeParams: true});
+const router = express.Router({
+  mergeParams: true
+});
 
 
 
@@ -12,65 +13,137 @@ const Battle = require('../models/battle')
 
 //Get Users Index
 router.get('/', (req, res) => {
-      Battle.find({}).then((battles) =>{
-      console.log(battles[0].users);
-      
-      
-      res.render(
-        'users/index',
-        {
-         users: battles[0].users 
+  const battleId = req.params.battleId;
+  Battle.find({}).then((battles) => {
+    console.log(battles[0].users);
 
-        }
-      )
-    })
+
+    res.render(
+      'users/index', {
+        users: battles[0].users,
+        battleId
+
+      }
+    )
+  })
 });
 
 // Create User Form
 router.get('/new', (req, res) => {
-  res.render('users/new')
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  console.log(battleId);
+  res.render('users/new', {
+    battleId
+  })
 });
 
 // Post New User to Index
-// router.post('/', (req, res) => {
-//   const newUserInfo = req.body;
-//   let currentUser = [];
+router.post('/', (req, res) => {
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  const newUserInfo = req.body;
+  let currentUser = [];
 
-//   Battle.find({}).then((battle) => {
-//     const newUser = new User(newUserInfo);
-//     console.log(newUser);
-//     battle.users.push(newUser);
-//     currentUser.push(newUser);
-//     return user.save();
-//   }).then((battle) => {
-//     console.log("SUCC");
-//     res.render("users/show")
-//   })
-// });
+  Battle.findById(battleId).then((battle) => {
+    const newUser = new User(newUserInfo);
+    console.log(newUser);
+    battle.users.push(newUser);
+    currentUser.push(newUser);
+    return battle.save();
+
+  }).then((battle) => {
+    console.log("SUCC");
+    res.render("users/show", {
+      battleId,
+      userId,
+      userName: currentUser[0].userName,
+      firstName: currentUser[0].firstName,
+      lastName: currentUser[0].lastName,
+      email: currentUser[0].email
+    })
+  }).catch((error) => {
+    console.log(error);
+  });
+    console.log(currentUser);
+});
 
 // Show User route
-router.get('/:id', (req, res) => {
-  // const battleId = req.params.id;
+router.get('/:userId', (req, res) => {
+  const battleId = req.params.battleId;
   const userId = req.params.userId;
-  Battle.find({}).then((battle) =>{
-    console.log(battle[0].users);
-    const foundUser = battle.find((user) => {
+  Battle.findById(battleId).then((battle) => {
+    console.log(battleId);
+    const foundUser = battle.users.find((user) => {
       return user.id === userId;
     });
-    console.log(foundUser);
-    res.render('users/show', 
-        {
-          userId,
-          userName: foundUser.userName,
-          firstName: foundUser.firstName,
-          lastName: foundUser.lastName,
-          email: foundUser.email
-        }
-        )
+    // console.log(foundUser);
+    res.render('users/show', {
+      battleId,
+      userId,
+      userName: foundUser.userName,
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName,
+      email: foundUser.email
+    })
     // res.send(battles[0].users);
   }).catch((error) => {
     console.log(error);
   })
+});
+
+//Edit Form For User
+router.get('/:userId/edit', (req,res)=>{
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  console.log(battleId);
+  Battle.findById(battleId).then((battle) => {
+    const foundUser = battle.users.find((user) => {
+      return user.id === userId;
+    });
+    res.render('users/edit', {
+      battleId,
+      userId,
+      userName: foundUser.userName,
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName,
+      email: foundUser.email
+    });
+  }).catch((error) => {
+    console.log(error);
+  });
+});
+
+//Update the User (PUT)
+router.put('/:userId', (req,res) => {
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  console.log(battleId);
+  Battle.findById(battleId).then((battle) => {
+    const foundUser = battle.users.find((user) => {
+      return user.id === userId;
+    });
+
+    foundUser.userName = req.body.userName;
+    foundUser.firstName = req.body.firstName;
+    foundUser.lastName = req.body.lastName;
+    foundUser.email = req.body.email;
+
+    battle.save();
+
+    console.log('SUCCESS');
+
+    res.render('users/show', {
+      battleId,
+      userId,
+      userName: foundUser.userName,
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName,
+      email: foundUser.email
+    });
+ }).catch((error) => {
+    console.log(error);
+  });
 });
 
 module.exports = router;
