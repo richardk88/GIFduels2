@@ -69,7 +69,7 @@ router.get('/:gifId', (req, res) => {
     const foundUser = battle.users.find((user) => {
       return user.id === userId
     });
-    const foundGif = foundUser.gifs.find((gif)=>{
+    const foundGif = foundUser.gifs.find((gif) => {
       return gif.id === gifId;
     });
     res.render('gifs/show', {
@@ -85,56 +85,82 @@ router.get('/:gifId', (req, res) => {
   })
 })
 
-// // Show route
-// router.get('/:gifId', (req, res) => {
-//   const userId = req.params.id;
-//   const gifId = req.params.gifId;
-//   User.findById(userId).then((user) => {
+//Edit Form for GIF
+router.get('/:gifId/edit', (req, res) => {
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  const gifId = req.params.gifId;
+  Battle.findById(battleId).then((battle) => {
+    const foundUser = battle.users.find((user) => {
+      return user.id === userId
+    });
+    const foundGif = foundUser.gifs.find((gif) => {
+      return gif.id === gifId;
+    });
+    res.render('gifs/edit', {
+      battleId,
+      userId,
+      gifId,
+      userName: foundUser.userName,
+      title: foundGif.title,
+      imgUrl: foundGif.imgUrl,
+      votes: foundGif.votes,
 
-//     const foundGif = user.gifs.find((gif) => {
-//         return gif.id === gifId;
-//     });
-//     // res.send(foundGif)
-//     res.render(
-//       'gifs/show',
-//       {
-//         userId,
-//         gifId,
-//         userName: user.userName,
-//         title: foundGif.title,
-//         imgUrl: foundGif.imgUrl,
-//         votes: foundGif.votes
-//       }
-//     );
+    })
+  })
+})
 
-// }).catch((error) => {
-//      console.log(`Failed to find gif with ID of ${gifId}`);
-//     console.log(error);
-// });
-// });
+//Update GIF (PUT ROUTE)
+router.put('/:gifId', (req, res) => {
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  const gifId = req.params.gifId;
+  const gifInfoToUpdate = req.body;
 
+  Battle.findByIdAndUpdate(battleId).then((battle) => {
+    const foundUser = battle.users.find((user) => {
+      return user.id === userId
+    });
+    const foundGif = foundUser.gifs.find((gif) => {
+      return gif.id === gifId;
+    });
+    foundGif.title = gifInfoToUpdate.title;
+    foundGif.imgUrl = gifInfoToUpdate.imgUrl;
+    battle.save();
+    console.log('SUCCESS');
+    res.render('gifs/show', {
+      battleId,
+      userId,
+      gifId,
+      userName: foundUser.userName,
+      title: foundGif.title,
+      imgUrl: foundGif.imgUrl,
+      votes: foundGif.votes,
+    });
+  }).catch((error) => {
+    console.log(error);
+  });
+});
 
-// //Edit Form For Gif
-// router.get('/:gifId/edit', (req, res) =>{
-//   const userId = req.params.id;
-//   const gifId = req.params.gifId;
-
-//   User.findById(userId).then((user) => {
-//     const foundGif = user.gifs.find((gif) => {
-//       return gif.id === gifId;
-//     });
-
-//     res.render('gifs/edit', {
-//       userId,
-//       gifId,
-//       userName: user.userName,
-//       title: foundGif.title,
-//       imgUrl: foundGif.imgUrl
-
-//     });
-//   });
-// });
-
+//DELETE GIF
+router.get('/:gifId/delete', (req,res) =>{
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  const gifId = req.params.gifId;
+  Battle.findById(battleId).then((battle)=>{
+    const foundUser = battle.users.find((user) => {
+      return user.id === userId
+    });
+    const foundGif = foundUser.gifs.find((gif) => {
+      return gif.id === gifId;
+    });
+    foundUser.gifs.remove(foundGif);
+    battle.save();
+    res.redirect(`/${battleId}/users/${userId}/gifs`);
+  }).catch((error)=>{
+    console.log(error);
+  })
+});
 // //Update The Gif (PUT)
 // router.put('/:gifId', (req, res) => {
 //   const userId = req.params.id;
