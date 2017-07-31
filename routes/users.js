@@ -1,125 +1,76 @@
+
 const express = require('express');
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 
+
+
+const Gif = require('../models/gif');
 const User = require('../models/user');
+const Battle = require('../models/battle')
 
-// index router
+
+
+//Get Users Index
 router.get('/', (req, res) => {
-  User.find({}).then((users) => {
-    res.render(
-      'users/index', {
-        users
-      }
-    );
-  }).catch((error) => {
-    console.log('Error retrieving users from database!');
-    console.log(error);
-  });
-});
-
-//create user
-router.get('/new', (req, res) => {
-  res.render('users/new');
-});
-
-router.post('/', (req, res) => {
-  const newUserForm = req.body;
-  User.create(newUserForm)
-    .then((user) => {
+      Battle.find({}).then((battles) =>{
+      console.log(battles[0].users);
+      
+      
       res.render(
-        'users/show', {
-        userId: user._id,
-        userName: user.userName,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email
-        // gif: user.gifs[0].imgUrl
-        });
-    }).catch((error) => {
-      console.log('Error saving new user to database!');
-      console.log(error);
-    })
-})
+        'users/index',
+        {
+         users: battles[0].users 
 
-// Show route
+        }
+      )
+    })
+});
+
+// Create User Form
+router.get('/new', (req, res) => {
+  res.render('users/new')
+});
+
+// Post New User to Index
+// router.post('/', (req, res) => {
+//   const newUserInfo = req.body;
+//   let currentUser = [];
+
+//   Battle.find({}).then((battle) => {
+//     const newUser = new User(newUserInfo);
+//     console.log(newUser);
+//     battle.users.push(newUser);
+//     currentUser.push(newUser);
+//     return user.save();
+//   }).then((battle) => {
+//     console.log("SUCC");
+//     res.render("users/show")
+//   })
+// });
+
+// Show User route
 router.get('/:id', (req, res) => {
-  const userId = req.params.id;
-  User.findById(userId).then((user) => {
-      console.log(user);
-      res.render('users/show', {
-        userId: user._id,
-        userName: user.userName,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email
-        // gif: user.gifs[0].imgUrl
-      })
-    })
-    .catch((error) => {
-      console.log(error);
+  // const battleId = req.params.id;
+  const userId = req.params.userId;
+  Battle.find({}).then((battle) =>{
+    console.log(battle[0].users);
+    const foundUser = battle.find((user) => {
+      return user.id === userId;
     });
-});
-
-
-
-
-
-//Delete Route
-router.get('/:id/delete', (req, res) => {
-  const userIdToDelete = req.params.id;
-
-  User.findByIdAndRemove(userIdToDelete).then(() => {
-    console.log('HOORAY');
-    res.redirect('/users')
-  });
-});
-
-//Render Edit Form For User
-router.get('/:id/edit', (req, res) => {
-  const userIdToFind = req.params.id;
-  User.findById(userIdToFind)
-    .then( (user) => {
-      res.render('../views/users/edit', {
-        userId: user._id,
-        userName: user.userName,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email
-        // gif: user.gifs[0].imgUrl
-      }
-      );
-    })
-})
-//Update Route
-router.put('/:id', (req, res) => {
-
-  const userIdToUpdate = req.params.id;
-  const updatedUserInfo = req.body;
-
-  User.findByIdAndUpdate(
-      userIdToUpdate,
-      updatedUserInfo,
-      {new: true} 
-  ).then((user) => {
-    console.log(`User with ID of ${user._id} updated!`);
-
-    res.render(
-        'users/show',
-          {
-        userId: user._id,
-        userName: user.userName,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email
-        // gif: user.gifs[0].imgUrl
-      }
-    );
+    console.log(foundUser);
+    res.render('users/show', 
+        {
+          userId,
+          userName: foundUser.userName,
+          firstName: foundUser.firstName,
+          lastName: foundUser.lastName,
+          email: foundUser.email
+        }
+        )
+    // res.send(battles[0].users);
   }).catch((error) => {
-    console.log(`User with ID of ${user._id} failed to update!`);
     console.log(error);
-  });
-
+  })
 });
-
 
 module.exports = router;
