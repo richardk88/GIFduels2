@@ -8,24 +8,24 @@ const User = require('../models/user');
 const Battle = require('../models/battle')
 
 //INDEX FOR USER'S GIFS
-router.get('/', (req, res, next) => {
-  const battleId = req.params.battleId;
-  const userId = req.params.userId;
-  Battle.findById(battleId).then((battle) => {
-    const foundUser = battle.users.find((user) => {
-      return user.id === userId
-    });
-    res.render('gifs/index', {
-      battleId,
-      userId,
-      userName: foundUser.userName,
-      gifs: foundUser.gifs,
+// router.get('/', (req, res, next) => {
+//   const battleId = req.params.battleId;
+//   const userId = req.params.userId;
+//   Battle.findById(battleId).then((battle) => {
+//     const foundUser = battle.users.find((user) => {
+//       return user.id === userId
+//     });
+//     res.render('gifs/index', {
+//       battleId,
+//       userId,
+//       userName: foundUser.userName,
+//       gifs: foundUser.gifs,
 
-    })
-  }).catch((error) => {
-    console.log(error);
-  });
-});
+//     })
+//   }).catch((error) => {
+//     console.log(error);
+//   });
+// });
 
 //NEW GIF FORM
 router.get('/new', (req, res) => {
@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
     foundUser.gifs.push(newGif);
     battle.save();
     console.log('SUCCESS');
-    res.render('gifs/index', {
+    res.render('users/show', {
       battleId,
       userId,
       userName: foundUser.userName,
@@ -159,7 +159,7 @@ router.get('/:gifId/delete', (req,res) =>{
     });
     foundUser.gifs.remove(foundGif);
     battle.save();
-    res.redirect(`/${battleId}/users/${userId}/gifs`);
+    res.redirect(`/${battleId}/users/${userId}`);
   }).catch((error)=>{
     console.log(error);
   })

@@ -93,7 +93,8 @@ router.get('/:userId', (req, res) => {
       lastName: foundUser.lastName,
       email: foundUser.email,
       wins: foundUser.wins,
-      losses: foundUser.losses
+      losses: foundUser.losses,
+      gifs: foundUser.gifs
       
     })
     // res.send(battles[0].users);

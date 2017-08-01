@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   email: String,
   gifs:[GifSchema],
   wins: Number,
-  losses: Number
+  losses:Number
   
 
 });

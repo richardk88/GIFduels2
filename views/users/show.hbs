@@ -12,12 +12,23 @@
 {{!--
 <div>Imgurl: {{gif}}</div> --}} {{!--
 <div><img src="{{gif}}"></div> --}}
+<div class = "container">
+ <h1>{{userName}}'s GIFS</h1> 
+
+{{#each gifs}}
+    
+    <div><a href="/{{../battleId}}/users/{{../userId}}/{{this._id}}"><img src="{{this.imgUrl}}"></a></div>
+   
+{{/each}}
+<div><a href="/{{battleId}}/users/{{userId}}/new">Add a New GIF</a></div>
+
+</div>
 
 <div>
     <a href="/{{battleId}}/users">Back to User's index</a>
 </div>
 <div>
-    <a href="/{{battleId}}/users/{{userId}}/delete">Delete</a>
+    <a href="/{{battleId}}/users/{{userId}}/delete">Delete User</a>
 </div>
 <div>
     <a href="/{{battleId}}/users/{{userId}}/edit">Edit</a>
