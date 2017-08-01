@@ -7,7 +7,7 @@ $('.gif2').off();
 function newDuel() {
     window.location.reload();
 }
-setTimeout(newDuel,1000);
+setTimeout(newDuel,1500);
 })
 
 //click event for gif2 win

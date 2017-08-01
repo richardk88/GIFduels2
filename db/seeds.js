@@ -1,93 +1,3 @@
-// const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/GIFduels2');
-// // mongoose.connect(process.env.MONGODB_URI);
-
-// const Battle = require('../models/battle');
-// const User = require('../models/user');
-// const Gif = require('../models/gif')
-
-// // Use native promises
-// mongoose.Promise = global.Promise;
-
-// // First we clear the database of existing users, gifs, and battles.
-// Gif.remove({}, function(err){
-//   console.log(err);
-// });
-
-// User.remove({}, function(err){
-//   console.log(err);
-// });
-
-
-// Battle.remove({}, function(err){
-//   console.log(err);
-// });
-
-// // Create new Gifs
-// const gifOne = new Gif({
-//   title: 'Hard',
-//   imgUrl: 'https://media.giphy.com/media/BYhoMtJMQsYVy/giphy.gif',
-//   votes: 0
-// });
-
-
-
-
-// // Create new users
-// const jace = new User({
-//   firstName: 'Jace',
-//   lastName: 'Garcia',
-//   userName: 'Weeeeee3',
-//   email: 'funtimes@example.com',
-//   gifs: [gifOne]
-// });
-
-// const david = new User({
-//   firstName: 'David',
-//   lastName: 'Kim',
-//   userName: 'DavidThaMan',
-//   email: "cool@example.com",
-//   gifs: [gifOne]
-// })
-
-
-// // create new battles
-// const battleOne = new Battle({
-//   users: [jace, david],
-//   // playerOne: users[1],
-//   // playerTwo: users[1],
-//   playerOneVotes: 0,
-//   playerTwoVotes: 0
-
-// });
-
-
-// // save the gif
-// gifOne.save(function(err) {
-//   if (err) console.log(err);
-//     console.log("gif created!");
-// });
-// // save the user
-// jace.save(function(err) {
-//   if (err) console.log(err);
-//     console.log("user jace created!");
-// });
-
-// david.save(function(err) {
-//   if (err) console.log(err);
-//     console.log("user david created!");
-// });
-
-// // save the battle
-// battleOne.save(function(err) {
-//   if (err) console.log(err);
-
-//   console.log('battleOne created!');
-// });
-
-// // console.log(jace);
-// console.log(battleOne);
-// mongoose.connection.close();
 
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/GIFduels2');
@@ -250,7 +160,7 @@ const gifTwentyTwo = new Gif ({
 const gifTwentyThree = new Gif ({
   title: 'Arrested Development',
   imgUrl: 'https://media.giphy.com/media/LycfkVG4L6x0Y/giphy.gif',
-  votes: 0  
+  votes: 0
 });
 
 const gifTwentyFour = new Gif ({
@@ -804,7 +714,7 @@ masterChief.save(function(err) {
   if (err) console.log(err);
     console.log("user masterChief created!");
 });
-  
+
 // END OF USERS.SAVES
 
 // save the battle

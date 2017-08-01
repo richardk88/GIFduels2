@@ -1,9 +1,40 @@
+<div class="edituser">
 <h1>Edit User</h1>
 
+
+
 <form action="/{{battleId}}/users/{{userId}}?_method=PUT" method="POST">
+
+<div>
+   <div class="col-xs-3">
+    <label for="name">First Name:</label>
     <input type="text" name="firstName" value="{{firstName}}">
+    </div>
+</div>
+
+
+
+<div>
+    <div class="col-xs-3">
+    <label for="name">Last Name:</label>
     <input type="text" name="lastName" value="{{lastName}}">
+    </div>
+</div>
+
+<div>
+    <div class="col-xs-3">
+    <label for="name">Username:</label>
     <input type="text" name="userName" value="{{userName}}">
+    </div>
+</div>
+
+<div>
+    <div class="col-xs-3">
+    <label for="name">Email:</label>
     <input type="text" name="email" value="{{email}}"> {{!-- <input type="text" name="gif" value="{{gif}}"> --}}
     <a href="/users"><input type="submit" value="Edit"></a>
+    </div>
+    </div>
 </form>
+
+</div>

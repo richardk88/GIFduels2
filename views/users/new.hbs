@@ -1,9 +1,45 @@
-<h1>New User</h1>
+<div class="newedit">
+    <h1>New User</h1>
 
-<form action="/{{battleId}}/users" method="POST">
-    <input type="text" name="firstName" placeholder="First Name">
-    <input type="text" name="lastName" placeholder="Last Name">
-    <input type="text" name="userName" placeholder="Username">
-    <input type="text" name="email" placeholder="email"> 
-    <input type="submit" value="Create">
-</form>
+
+    <form action="/{{battleId}}/users" method="POST">
+        <div>
+            <div class="col-xs-3">
+                <label for="username">Username</label>
+                <input type="text" name="userName" placeholder="Username">
+            </div>
+        </div>
+
+        <div>
+            <div class="col-xs-3">
+                <label for="name">First Name</label>
+                <input type="text" name="firstName" placeholder="First Name">
+            </div>
+        </div>
+
+
+        <div>
+            <div class="col-xs-3">
+                <label for="name">Last Name</label>
+                <input type="text" name="lastName" placeholder="Last Name">
+            </div>
+
+        </div>
+
+
+
+        <div>
+            <div class="col-xs-3">
+                <label for="email">Email address</label>
+                <input type="text" name="email" placeholder="Email">
+            </div>
+        </div>
+
+
+        <input type="checkbox"> I am not a bot
+        <button type="submit" class="btn btn-default">Create User</button>
+
+    </form>
+
+
+</div>
