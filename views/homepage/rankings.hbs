@@ -1,9 +1,23 @@
-<h1>USERS RANKINGS</h1>
-<div>
-<ol>{{#each users}}
-	<li><br/><a href="/{{../battleId}}/users/{{this._id}}">{{this.userName}}</a></li>
-    <span class="space">wins:{{this.wins}}</span>
-	{{/each}}
-</ol>
+<div class="container">
+	<div class="text-center">
+		<h1>USERS RANKINGS</h1>
+	</div>
+	<br>
+	<br>
+	<div class="row">
+		<div class="col-md-6 text-center">
+			<ol>{{#each users}}
+				<li><br/><a href="/{{../battleId}}/users/{{this._id}}">{{this.userName}}</a></li>
+				<span class="space">wins:{{this.wins}}</span> {{/each}}
+			</ol>
+
+		</div>
+		<div class="col-md-6">
+
+			<img src="https://media.giphy.com/media/g2XnJHx3LajQs/giphy.gif" alt="">
+
+		</div>
+		
+	</div>
 
 </div>
