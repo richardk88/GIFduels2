@@ -90,7 +90,7 @@
 // mongoose.connection.close();
 
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/GIFduels2');
+mongoose.connect('mongodb://localhost/GIFduels2');
 mongoose.connect(process.env.MONGODB_URI);
 
 const Battle = require('../models/battle');
@@ -514,8 +514,9 @@ const masterChief = new User({
 // create new battle
 const battleOne = new Battle({
   users: [jace, david, john, aaron, rick, morty, jerry, birdPerson, richard, jared, dinesh, gilfoyle, bigHead, erlich, ash, sly, carmen, summer, laurie, angelica, patrick, spongebob, squidward, sandy, earl, nathan, sully, masterChief],
-  playerOne: users[1],
-  playerTwo: users[1],
+  randomIndex: [],
+  // playerOne: users[1],
+  // playerTwo: users[1],
   playerOneVotes: 0,
   playerTwoVotes: 0
 

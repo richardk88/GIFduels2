@@ -8,14 +8,12 @@ const router = express.Router({
 const Gif = require('../models/gif');
 const User = require('../models/user');
 const Battle = require('../models/battle')
-//users' index
-var firstNumber;
-var secondNumber;
-//GIFs' index
-var gifOneIndex;
-var gifTwoIndex;
+var gifOneIdNumber;
+var gifTwoIdNumber;
+var userOneIdNumber;
+var userTwoIdNumber;
 
-/* GET home page. */
+//Opening Page ROUTE USELESS
 router.get('/', function (req, res) {
   var firstNumber;
   var secondNumber;
@@ -46,9 +44,11 @@ router.get('/', function (req, res) {
 
 
 });
-//show route
+//DUEL PAGE (ACTUAL HOMEPAGE)
 router.get('/:battleId', (req, res) => {
   const battleId = req.params.battleId;
+  var firstNumber;
+  var secondNumber;
 
 
 //random index for users
@@ -62,28 +62,38 @@ router.get('/:battleId', (req, res) => {
   
   //random index for gifs
 
-  Battle.find({}).then((battles) => {
+  Battle.findByIdAndUpdate(battleId).then((battle) => {
     // console.log(battles[0].playerOne.gifs[0].imgUrl);
     // res.send(battles[0].playerOne.gifs[0].imgUrl);
     // User.find({}).then()
     
-    randomNumber(battles[0].users);
-    const gifOne = battles[0].users[firstNumber].gifs
-    const gifTwo = battles[0].users[secondNumber].gifs
+    randomNumber(battle.users);
+    const gifOne = battle.users[firstNumber].gifs
+    const gifTwo = battle.users[secondNumber].gifs
    
-    console.log("BATTLES", battles[0]);
+    
 
-    gifOneIndex = Math.floor(Math.random() * gifOne.length);
-    gifTwoIndex = Math.floor(Math.random() * gifTwo.length);
+    var gifOneIndex = Math.floor(Math.random() * gifOne.length);
+    var gifTwoIndex = Math.floor(Math.random() * gifTwo.length);
+    
+    // gifOneIdNumber = battles[0].users[firstNumber].gifs[gifOneIndex].id;
+    // gifTwoIdNumber = battles[0].users[secondNumber].gifs[gifTwoIndex].id;
+    // userOneIdNumber = battles[0].users[firstNumber].id;
+    // userTwoIdNumber = battles[0].users[secondNumber].id;
+    battle.randomIndex.push(firstNumber);
+    battle.randomIndex.push(secondNumber);
+    battle.randomIndex.push(gifOneIndex);
+    battle.randomIndex.push(gifTwoIndex);
+    battle.save();
   
-    console.log(gifOne.length)
+   
     res.render(
       'homepage/show', {
         battleId,
-        playerOne: battles[0].users[firstNumber].userName,
-        playerTwo: battles[0].users[secondNumber].userName,
-        gifOne: battles[0].users[firstNumber].gifs[gifOneIndex].imgUrl,
-        gifTwo: battles[0].users[secondNumber].gifs[gifTwoIndex].imgUrl,
+        playerOne: battle.users[firstNumber].userName,
+        playerTwo: battle.users[secondNumber].userName,
+        gifOne: battle.users[firstNumber].gifs[gifOneIndex].imgUrl,
+        gifTwo: battle.users[secondNumber].gifs[gifTwoIndex].imgUrl,
         
       }
 
@@ -94,32 +104,64 @@ router.get('/:battleId', (req, res) => {
   
 })
 
-// Put route to increment votes for Player One GIF
+// Get route to increment votes for Player One GIF
 
-// router.put('/:battleId/userone', (req, res) => {
-//   const battleId = req.params.battleId;
+router.get('/:battleId/onewin', (req, res) => {
+  const battleId = req.params.battleId;
 
 
-
-//   Battle.findByIdAndUpdate(battleId).then((battle) => {
-//     // console.log(battle);
-//     const foundUserOne = battle.users[firstNumber];
-//     const gifOne = foundUserOne.gifs[gifOneIndex];
-    
-//     console.log(foundUserOne.gifs)
+//Find battle
+  Battle.findByIdAndUpdate(battleId).then((battle) => {
+    //length of index values array pushed from duel page
+    const indexLength = battle.randomIndex.length;
+    console.log(indexLength);
+    //playerOne index
+    const usersIndex = battle.randomIndex[indexLength-4];
+    //gifOne index
+    const gifsIndex = battle.randomIndex[indexLength-2];
+    const foundUser = battle.users[usersIndex];
+    const foundGif = foundUser.gifs[gifsIndex];
+    console.log(foundGif);
   
-//     gifOne.votes += 1;
-//     battle.save();
-//     console.log('SUCCESS');
-//     res.redirect(`/${battleId}`);
-//   }).catch((error)=>{
-//      console.log(error);
-//   })
+    //increase gifOne votes by 1
+    foundGif.votes += 1;
+    battle.save();
+   
+    console.log('SUCCESS');
+    // res.redirect(`/${battleId}`);
+  }).catch((error)=>{
+     console.log(error);
+  })
 
-// });
-// //Get Users Index
-// router.get('/users', (req, res) => {
-//   res.send("Dan is the best")
-// })
+});
 
+//GET route to increase GIF votes for player TWO
+router.get('/:battleId/twowin', (req, res) => {
+  const battleId = req.params.battleId;
+
+
+//Find battle
+  Battle.findByIdAndUpdate(battleId).then((battle) => {
+    //length of index values array pushed from duel page
+    const indexLength = battle.randomIndex.length;
+    console.log(indexLength);
+    //playerTWO index
+    const usersIndex = battle.randomIndex[indexLength-3];
+    //gifTWO index
+    const gifsIndex = battle.randomIndex[indexLength-1];
+    const foundUser = battle.users[usersIndex];
+    const foundGif = foundUser.gifs[gifsIndex];
+    console.log(foundGif);
+  
+    //increase gifOne votes by 1
+    foundGif.votes += 1;
+    battle.save();
+   
+    console.log('SUCCESS');
+    // res.redirect(`/${battleId}`);
+  }).catch((error)=>{
+     console.log(error);
+  })
+
+});
 module.exports = router;

@@ -17,7 +17,8 @@ const UserSchema = new Schema({
   lastName: String,
   userName: String,
   email: String,
-  gifs:[GifSchema]
+  gifs:[GifSchema],
+  wins: Number
   
 
 });
@@ -27,6 +28,7 @@ const BattleSchema = new Schema({
   created_at: Date,
   updated_at: Date,
   users:[UserSchema],
+  randomIndex:[],
   // playerOne: UserSchema,
   // playerTwo: UserSchema,
   playerOneVotes: Number,
