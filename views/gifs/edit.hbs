@@ -1,5 +1,11 @@
 <form action="/{{battleId}}/users/{{userId}}/{{gifId}}?_method=PUT" method="POST">
-    <input type="text" value="{{title}}" name="title">
-    <input type="text" value="{{imgUrl}}" name="imgUrl">
-    <input type="submit" value="Update Item">
+    <div class="form-group">
+       <label for="name">Gif Title</label>
+       <input type="text" class="form-control" name="title" placeholder="Gif Title">
+    </div>
+    <div class="form-group">
+      <label for="name">Gif Url</label>
+      <input type="text" class="form-control" name="imgUrl" placeholder="Gif Url">
+    </div>
+    <button type="submit" class="btn btn-default">submit</button>
 </form>

@@ -95,7 +95,7 @@ router.get('/:userId', (req, res) => {
       wins: foundUser.wins,
       losses: foundUser.losses,
       gifs: foundUser.gifs
-      
+
     })
     // res.send(battles[0].users);
   }).catch((error) => {

@@ -12,12 +12,7 @@
 <div>Email: {{email}}</div>
 <div>Wins: {{wins}}</div>
 <div>Losses: {{losses}}</div>
-<div>
-    <a href="/{{battleId}}/users/{{userId}}/gifs"><button class="btn btn-primary">View Dank Gifs</button></a>
-</div>
-{{!--
-<div>Imgurl: {{gif}}</div> --}} {{!--
-<div><img src="{{gif}}"></div> --}}
+
 <div class = "container">
  <h1>{{userName}}'s GIFS</h1>
 
@@ -26,12 +21,13 @@
     <div><a href="/{{../battleId}}/users/{{../userId}}/{{this._id}}"><img src="{{this.imgUrl}}"></a></div>
 
 {{/each}}
-<div><a href="/{{battleId}}/users/{{userId}}/new">Add a New GIF</a></div>
-
 </div>
 
 <div>
     <a href="/{{battleId}}/users"><button class="btn btn-primary">Back to User's index</button></a>
+</div>
+<div>
+    <a href="/{{battleId}}/users/{{userId}}/new"><button class="btn btn-primary">Add a new gif</button></a>
 </div>
 <div>
     <a href="/{{battleId}}/users/{{userId}}/delete"><button class="btn btn-danger">Delete</button></a>

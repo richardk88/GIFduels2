@@ -1,5 +1,9 @@
 const express = require('express');
-const router = express.Router({mergeParams: true});
+const router = express.Router({
+  mergeParams: true
+});
+
+
 
 const Gif = require('../models/gif');
 const User = require('../models/user');
@@ -21,6 +25,9 @@ router.get('/', function (req, res) {
     } while (firstNumber === secondNumber);
   }
   Battle.find({}).then((battles) => {
+    // console.log(battles[0].playerOne.gifs[0].imgUrl);
+    // res.send(battles[0].playerOne.gifs[0].imgUrl);
+    // User.find({}).then()
     randomNumber(battles[0].users);
     res.render(
       'homepage/index', {
@@ -102,7 +109,6 @@ router.get('/:battleId', (req, res) => {
 router.get('/:battleId/onewin', (req, res) => {
   const battleId = req.params.battleId;
 
-})
 
 //Find battle
   Battle.findByIdAndUpdate(battleId).then((battle) => {

@@ -68,63 +68,45 @@ router.get('/:gifId', (req, res) => {
   })
 })
 
-//Edit Form for GIF
-router.get('/:gifId/edit', (req, res) => {
+//NEW GIF FORM
+router.get('/new', (req, res) => {
   const battleId = req.params.battleId;
   const userId = req.params.userId;
-  const gifId = req.params.gifId;
-  Battle.findById(battleId).then((battle) => {
-    const foundUser = battle.users.find((user) => {
-      return user.id === userId
-    });
-    const foundGif = foundUser.gifs.find((gif) => {
-      return gif.id === gifId;
-    });
-    res.render('gifs/edit', {
-      battleId,
-      userId,
-      gifId,
-      userName: foundUser.userName,
-      title: foundGif.title,
-      imgUrl: foundGif.imgUrl,
-      wins: foundGif.wins,
-      losses: foundGif.losses
-    })
-  })
-})
-
-//Update GIF (PUT ROUTE)
-router.put('/:gifId', (req, res) => {
-  const battleId = req.params.battleId;
-  const userId = req.params.userId;
-  const gifId = req.params.gifId;
-  const gifInfoToUpdate = req.body;
-
-  Battle.findByIdAndUpdate(battleId).then((battle) => {
-    const foundUser = battle.users.find((user) => {
-      return user.id === userId
-    });
-    const foundGif = foundUser.gifs.find((gif) => {
-      return gif.id === gifId;
-    });
-    foundGif.title = gifInfoToUpdate.title;
-    foundGif.imgUrl = gifInfoToUpdate.imgUrl;
-    battle.save();
-    console.log('SUCCESS');
-    res.render('gifs/show', {
-      battleId,
-      userId,
-      gifId,
-      userName: foundUser.userName,
-      title: foundGif.title,
-      imgUrl: foundGif.imgUrl,
-      wins: foundGif.wins,
-      losses: foundGif.losses
-    });
-  }).catch((error) => {
-    console.log(error);
+  res.render('gifs/new', {
+    battleId,
+    userId
   });
 });
+//POST NEW GIF
+router.post('/', (req, res) => {
+  const battleId = req.params.battleId;
+  const userId = req.params.userId;
+  const gifInfo = req.body;
+  Battle.findById(battleId).then((battle) => {
+    const newGif = new Gif(gifInfo);
+    const foundUser = battle.users.find((user) => {
+      return user.id === userId;
+    });
+    foundUser.gifs.push(newGif);
+    battle.save();
+    console.log('SUCCESS');
+    res.render('users/show', {
+      battleId,
+      userId,
+      userName: foundUser.userName,
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName,
+      email: foundUser.email,
+      wins: foundUser.wins,
+      losses: foundUser.losses,
+      gifs: foundUser.gifs,
+      title: newGif.title,
+      imgUrl: newGif.imgUrl
+    })
+  }).catch((error) => {
+    console.log(error);
+  })
+})
 
 //DELETE GIF
 router.get('/:gifId/delete', (req,res) =>{

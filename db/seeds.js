@@ -182,12 +182,8 @@ const gifTwentyTwo = new Gif ({
 const gifTwentyThree = new Gif ({
   title: 'Arrested Development',
   imgUrl: 'https://media.giphy.com/media/LycfkVG4L6x0Y/giphy.gif',
-<<<<<<< HEAD
-  votes: 0
-=======
   wins: 0 ,
   losses: 0 
->>>>>>> 50ed383cc463167be6100d4cfa73d660c0456052
 });
 
 const gifTwentyFour = new Gif ({
@@ -513,11 +509,7 @@ const masterChief = new User({
 // create new battle
 const battleOne = new Battle({
   users: [jace, david, john, aaron, rick, morty, jerry, birdPerson, richard, jared, dinesh, gilfoyle, bigHead, erlich, ash, sly, carmen, summer, laurie, angelica, patrick, spongebob, squidward, sandy, earl, nathan, sully, masterChief],
-  randomIndex: [],
-  // playerOne: users[1],
-  // playerTwo: users[1],
-  // playerOneVotes: 0,
-  // playerTwoVotes: 0
+  randomIndex: []
 
 });
 

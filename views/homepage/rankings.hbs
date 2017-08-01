@@ -1,9 +1,9 @@
-<h1>USERS RANKINGS and GIF RANKINGS</h1>
+<h1>USERS RANKINGS</h1>
 <div>
 <ol>{{#each users}}
-	<li><a href="/{{../battleId}}/users/{{this._id}}">{{this.userName}}</a></li>
-    <span>wins:{{this.wins}}</span>
+	<li><br/><a href="/{{../battleId}}/users/{{this._id}}">{{this.userName}}</a></li>
+    <span class="space">wins:{{this.wins}}</span>
 	{{/each}}
 </ol>
+
 </div>
-<a href="/{{battleId}}">Back to GIF Duels</a>
