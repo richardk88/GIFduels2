@@ -7,7 +7,8 @@ mongoose.Promise = global.Promise;
 const GifSchema = new Schema({
   title: String,
   imgUrl: String,
-  votes: Number
+  wins: Number,
+  losses: Number
 
 })
 
@@ -17,7 +18,9 @@ const UserSchema = new Schema({
   lastName: String,
   userName: String,
   email: String,
-  gifs:[GifSchema]
+  gifs:[GifSchema],
+  wins: Number,
+  losses:Number
   
 
 });
@@ -27,11 +30,12 @@ const BattleSchema = new Schema({
   created_at: Date,
   updated_at: Date,
   users:[UserSchema],
+  randomIndex:[],
   // playerOne: UserSchema,
   // playerTwo: UserSchema,
-  playerOneVotes: Number,
-  playerTwoVotes: Number,
-  winner: UserSchema
+  // playerOneVotes: Number,
+  // playerTwoVotes: Number,
+  // winner: UserSchema
 });
 
 BattleSchema.pre('save', function(next){

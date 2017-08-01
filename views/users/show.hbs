@@ -6,8 +6,28 @@
 
 <br/>
 
+<div>Username: {{userName}}</div>
+<div>First Name: {{firstName}}</div>
+<div>Last Name: {{lastName}}</div>
+<div>Email: {{email}}</div>
+<div>Wins: {{wins}}</div>
+<div>Losses: {{losses}}</div>
 <div>
     <a href="/{{battleId}}/users/{{userId}}/gifs"><button class="btn btn-primary">View Dank Gifs</button></a>
+</div>
+{{!--
+<div>Imgurl: {{gif}}</div> --}} {{!--
+<div><img src="{{gif}}"></div> --}}
+<div class = "container">
+ <h1>{{userName}}'s GIFS</h1>
+
+{{#each gifs}}
+
+    <div><a href="/{{../battleId}}/users/{{../userId}}/{{this._id}}"><img src="{{this.imgUrl}}"></a></div>
+
+{{/each}}
+<div><a href="/{{battleId}}/users/{{userId}}/new">Add a New GIF</a></div>
+
 </div>
 
 <div>

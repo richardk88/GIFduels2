@@ -78,9 +78,10 @@ img.animated-gif {
 }
 
 .vs {
-  padding-top: 46px;
-  padding-left: 60px;
-  width: 300px;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  padding: 30px 30px 30px 30px;
 }
 
 .wrapper {
