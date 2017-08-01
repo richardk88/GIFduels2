@@ -4,7 +4,7 @@ a {
 }
 
 a:hover {
-  color: #f03523;
+  color: black;
   text-decoration: underline;
 }
 
@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   color: white;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #604569;
+  background: #C0BDBD;
 }
 
 .edituser, .newedit {
@@ -32,23 +32,9 @@ img.animated-gif {
   text-align: center;
 }
 
-.footer {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  height: 100px;
-  width: 100%;
-  color: white;
-  text-align: center;
-}
-
 .gif {
   width: 500px;
   height: 300px;
-}
-
-.home-page-title {
-  text-align: center;
 }
 
 .playerfonts {
@@ -58,18 +44,32 @@ img.animated-gif {
 
 .the {
   display: flex;
+  text-align: center;
+  flex-direction: row;
   align-content: space-between;
+  font-size: 14px;
 }
 
-.vs {
-  padding-top: 46px;
-  padding-left: 60px;
-  width: 300px;
+.vsLogo {
+  width: 55%;
 }
 
-.wrapper {
-  display: block;
-  align-items: center;
-  margin: 0 auto;
-  padding-bottom: 112px;
+.mainGif {
+  border-radius: 100px;
+  border: 1 solid black;
+}
+
+.btnColor{
+  background-color: red;
+}
+
+.fontSize {
+  font-size: 14px;
+}
+
+.footer {
+  width:100%; 
+  float:left; 
+  background:#333; 
+  height:35px;
 }
