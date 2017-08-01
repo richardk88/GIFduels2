@@ -65,7 +65,9 @@ router.post('/', (req, res) => {
       firstName: currentUser[0].firstName,
       lastName: currentUser[0].lastName,
       email: currentUser[0].email,
-      gifs: currentUser[0].gifs
+      gifs: currentUser[0].gifs,
+      losses: currentUser[0].losses,
+      wins: currentUser[0].wins
     })
   }).catch((error) => {
     console.log(error);
@@ -89,7 +91,10 @@ router.get('/:userId', (req, res) => {
       userName: foundUser.userName,
       firstName: foundUser.firstName,
       lastName: foundUser.lastName,
-      email: foundUser.email
+      email: foundUser.email,
+      wins: foundUser.wins,
+      losses: foundUser.losses
+      
     })
     // res.send(battles[0].users);
   }).catch((error) => {
@@ -144,7 +149,9 @@ router.put('/:userId', (req, res) => {
       userName: foundUser.userName,
       firstName: foundUser.firstName,
       lastName: foundUser.lastName,
-      email: foundUser.email
+      email: foundUser.email,
+      wins: foundUser.wins,
+      losses: foundUser.losses
     });
   }).catch((error) => {
     console.log(error);

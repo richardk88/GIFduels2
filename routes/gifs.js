@@ -80,7 +80,8 @@ router.get('/:gifId', (req, res) => {
       userName: foundUser.userName,
       title: foundGif.title,
       imgUrl: foundGif.imgUrl,
-      votes: foundGif.votes,
+      wins: foundGif.wins,
+      losses: foundGif.losses
 
     })
   })
@@ -105,8 +106,8 @@ router.get('/:gifId/edit', (req, res) => {
       userName: foundUser.userName,
       title: foundGif.title,
       imgUrl: foundGif.imgUrl,
-      votes: foundGif.votes,
-
+      wins: foundGif.wins,
+      losses: foundGif.losses
     })
   })
 })
@@ -136,7 +137,8 @@ router.put('/:gifId', (req, res) => {
       userName: foundUser.userName,
       title: foundGif.title,
       imgUrl: foundGif.imgUrl,
-      votes: foundGif.votes,
+      wins: foundGif.wins,
+      losses: foundGif.losses
     });
   }).catch((error) => {
     console.log(error);

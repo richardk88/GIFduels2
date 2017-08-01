@@ -89,9 +89,9 @@
 // console.log(battleOne);
 // mongoose.connection.close();
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/GIFduels2');
-mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI);
 
 const Battle = require('../models/battle');
 const User = require('../models/user');
@@ -118,171 +118,199 @@ Battle.remove({}, function(err){
 const gifOne = new Gif({
   title: 'Hard',
   imgUrl: 'https://media.giphy.com/media/BYhoMtJMQsYVy/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwo = new Gif ({
    title: 'Simon No',
    imgUrl: 'https://media.tenor.co/images/a2b15b73f6a3dfbb0814994301525a69/tenor.gif',
-   votes: 0
+   wins: 0,
+   losses: 0
 });
 
 const gifThree = new Gif ({
    title: 'JIF',
    imgUrl: 'https://media.tenor.co/images/7f80117eb94f61647fb6a197415c3f26/tenor.gif',
-   votes: 0
+   wins: 0,
+   losses: 0
 });
 
 const gifFour = new Gif ({
    title: 'Dancer',
    imgUrl: 'https://i.giphy.com/media/l0K4iuXy7gQjJ31M4/giphy.webp',
-   votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifFive = new Gif ({
    title: 'Pizza',
    imgUrl: 'https://media.tenor.co/images/d7b3c40797c5683e75a8f6ce9c38fb2c/tenor.gif',
-   votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifSix = new Gif ({
    title: 'Fart',
    imgUrl: 'https://media3.giphy.com/media/UvZfI40CPUfW8/giphy.gif',
-   votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifSeven = new Gif ({
    title: 'Gump',
    imgUrl: 'https://media.tenor.co/images/eb025f63cbc7d456c2d6ce14cf1cb441/tenor.gif',
-   votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifEight = new Gif ({
    title: 'Come on Son',
    imgUrl: 'https://media.giphy.com/media/89No6UHzuUam4/giphy.gif',
-   votes: 0
+   wins: 0,
+   losses: 0
 });
 
 const gifNine = new Gif ({
    title: 'Saitama',
    imgUrl: 'https://media.giphy.com/media/VXJWhaO7afRe/giphy.gif',
-   votes: 0
+   wins: 0,
+   losses: 0
 });
 
 const gifTen = new Gif ({
   title: 'Guy',
   imgUrl: 'https://media.tenor.co/images/2162f0e11ed924dec5a5095190f65908/tenor.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifEleven = new Gif ({
   title: 'Derp Baby',
   imgUrl: 'https://media.giphy.com/media/l41lXkx9x8OTM1rwY/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwelve = new Gif ({
   title: 'YES',
   imgUrl: 'https://media.giphy.com/media/uTuLngvL9p0Xe/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifThirteen = new Gif ({
   title: 'Drinks',
   imgUrl: 'https://media.giphy.com/media/uTuLngvL9p0Xe/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifFourteen = new Gif ({
   title: 'Ron',
   imgUrl: 'https://media.giphy.com/media/iOz3p2txHIo4U/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifFifteen = new Gif ({
   title: 'Body Rolls',
   imgUrl: 'https://media.giphy.com/media/bv8GhPZnZUL1m/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifSixteen = new Gif ({
   title: 'Yoda',
   imgUrl: 'https://media.giphy.com/media/fItgT774J3nWw/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifSeventeen = new Gif ({
   title: 'Old',
   imgUrl: 'https://media.giphy.com/media/l4KibWpBGWchSqCRy/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifEighteen = new Gif ({
   title: 'Crash',
   imgUrl: 'https://media.giphy.com/media/3o7Zeo6CklS8NHmWKk/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifNineteen = new Gif ({
   title: 'Sunglasses',
   imgUrl: 'https://media.giphy.com/media/1jnyRP4DorCh2/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwenty = new Gif ({
   title: 'Plane',
   imgUrl: 'https://media.giphy.com/media/26tOVXZALFoZdJ42I/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwentyOne = new Gif ({
   title: 'Magic',
   imgUrl: 'https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwentyTwo = new Gif ({
   title: 'IDK',
   imgUrl: 'https://media.giphy.com/media/y65VoOlimZaus/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwentyThree = new Gif ({
   title: 'Arrested Development',
   imgUrl: 'https://media.giphy.com/media/LycfkVG4L6x0Y/giphy.gif',
-  votes: 0  
+  wins: 0 ,
+  losses: 0 
 });
 
 const gifTwentyFour = new Gif ({
   title: 'Fusion',
   imgUrl: 'https://media.giphy.com/media/CCPMwVCV9PJa8/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwentyFive = new Gif ({
   title: 'Money',
   imgUrl: 'https://media.tenor.co/images/3e6e34d6cb50d6a9555076d70d5b608c/tenor.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 const gifTwentySix = new Gif ({
   title: 'Exercise',
   imgUrl: 'https://img.buzzfeed.com/buzzfeed-static/static/enhanced/terminal05/2012/4/17/12/anigif_enhanced-buzz-27448-1334678959-13.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 //savannah
 const gifTwentySeven = new Gif ({
   title: 'Nervous',
   imgUrl: 'https://media.giphy.com/media/bEVKYB487Lqxy/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 //clare
 const gifTwentyEight = new Gif ({
   title: 'Good Morning',
   imgUrl: 'https://media.giphy.com/media/l0ExbqkAKqIrlWdI4/giphy.gif',
-  votes: 0
+  wins: 0,
+  losses: 0
 });
 
 // Create new users
@@ -291,7 +319,9 @@ const jace = new User({
   lastName: 'Garcia',
   userName: 'Weeeeee3',
   email: 'funtimes@example.com',
-  gifs: [gifOne]
+  gifs: [gifOne],
+  wins:0,
+  losses: 0
 });
 
 const david = new User({
@@ -299,7 +329,9 @@ const david = new User({
   lastName: 'Kim',
   userName: 'DavidThaMan',
   email: "cool@example.com",
-  gifs: [gifTwo]
+  gifs: [gifTwo],
+  wins:0,
+  losses: 0
 })
 
 const john = new User({
@@ -307,7 +339,9 @@ const john = new User({
   lastName: 'Carrington',
   userName: 'JohnnyBoy',
   email: 'thejohn@porto.com',
-  gifs: [gifThree]
+  gifs: [gifThree],
+  wins: 0,
+  losses: 0
 })
 
 const aaron = new User({
@@ -315,7 +349,9 @@ const aaron = new User({
   lastName: 'Aaronson',
   userName: 'CoolKid',
   email: 'toomanyas@aaron.com',
-  gifs: [gifFour]
+  gifs: [gifFour],
+  wins: 0,
+  losses: 0
 })
 
 const rick = new User({
@@ -323,7 +359,9 @@ const rick = new User({
   lastName: 'Sanchez',
   userName: 'WubbaLubbaDubDub',
   email: 'rickc137@universe.org',
-  gifs: [gifFive]
+  gifs: [gifFive],
+  wins: 0,
+  losses: 0
 })
 
 const morty = new User({
@@ -331,7 +369,9 @@ const morty = new User({
   lastName: 'Smith',
   userName: 'WimpyKid22',
   email: 'uhh@morty.com',
-  gifs: [gifSix]
+  gifs: [gifSix],
+  wins: 0,
+  losses: 0
 })
 
 const jerry = new User({
@@ -339,7 +379,9 @@ const jerry = new User({
   lastName: 'Smith',
   userName: 'TheTrueJerry',
   email: 'jerry@balloongame.com',
-  gifs: [gifSeven]
+  gifs: [gifSeven],
+  wins: 0,
+  losses: 0
 })
 
 const birdPerson = new User({
@@ -347,7 +389,9 @@ const birdPerson = new User({
   lastName: 'Person',
   userName: 'IAmBirdPerson',
   email: 'birdperson@flywings.com',
-  gifs: [gifEight]
+  gifs: [gifEight],
+  wins: 0,
+  losses: 0
 })
 
 const richard = new User({
@@ -355,7 +399,9 @@ const richard = new User({
   lastName: 'Hendricks',
   userName: 'SmarterThanYou314',
   email: 'rhendricks@hooli.com',
-  gifs: [gifNine]
+  gifs: [gifNine],
+  wins: 0,
+  losses: 0
 })
 
 const jared = new User({
@@ -363,7 +409,9 @@ const jared = new User({
   lastName: 'Dunn',
   userName: 'BigDaddySlim',
   email: 'donald@hooli.com',
-  gifs: [gifTen]
+  gifs: [gifTen],
+  wins: 0,
+  losses: 0
 })
 
 const dinesh = new User({
@@ -371,7 +419,9 @@ const dinesh = new User({
   lastName: 'Chugtai',
   userName: 'PakistaniDenzel',
   email: 'dinesh@piperchat.com',
-  gifs: [gifEleven]
+  gifs: [gifEleven],
+  wins: 0,
+  losses: 0
 })
 
 const gilfoyle = new User({
@@ -379,7 +429,9 @@ const gilfoyle = new User({
   lastName: 'Gilfoyle',
   userName: 'HisEternalCoder6',
   email: 'gilfoyle@anton.com',
-  gifs: [gifTwelve]
+  gifs: [gifTwelve],
+  wins: 0,
+  losses: 0
 })
 
 const bigHead = new User ({
@@ -387,7 +439,9 @@ const bigHead = new User ({
   lastName: 'Bighetti',
   userName: 'BigHead',
   email: 'bighead@hooli.com',
-  gifs: [gifThirteen]
+  gifs: [gifThirteen],
+  wins: 0,
+  losses: 0
 })
 
 const erlich = new User({
@@ -395,7 +449,9 @@ const erlich = new User({
   lastName: 'Bachman',
   userName: 'Bachmanity',
   email: 'ebachman@bachmanity.com',
-  gifs: [gifFourteen]
+  gifs: [gifFourteen],
+  wins: 0,
+  losses: 0
 })
 
 const ash = new User({
@@ -403,7 +459,9 @@ const ash = new User({
   lastName: 'Ketchum',
   userName: 'PokemonMaster95',
   email: 'ash@gamefreak.com',
-  gifs: [gifFifteen]
+  gifs: [gifFifteen],
+  wins: 0,
+  losses: 0
 })
 
 const sly = new User({
@@ -411,7 +469,9 @@ const sly = new User({
   lastName: 'Cooper',
   userName: 'SlyCooper',
   email: 'sly@thieviousracoonus.com',
-  gifs: [gifSixteen]
+  gifs: [gifSixteen],
+  wins: 0,
+  losses: 0
 })
 
 const carmen = new User({
@@ -419,15 +479,20 @@ const carmen = new User({
   lastName: 'San Diego',
   userName: 'CarmenSanDiego',
   email: 'carmem@nooneknows.com',
-  gifs: [gifSeventeen]
+  gifs: [gifSeventeen],
+  wins: 0,
+  losses: 0
 })
+
 
 const summer = new User({
   firstName: 'Summer',
   lastName: 'Smith',
   userName: 'ForeverSummer',
   email: 'summer@balloongame.com',
-  gifs: [gifEighteen]
+  gifs: [gifEighteen],
+  wins: 0,
+  losses: 0
 })
 
 const laurie = new User ({
@@ -435,7 +500,9 @@ const laurie = new User ({
   lastName: 'Hodges',
   userName: 'ShowMeTheMoney11',
   email: 'lhodges@breemhall.com',
-  gifs: [gifNineteen]
+  gifs: [gifNineteen],
+  wins: 0,
+  losses: 0
 })
 
 const angelica = new User({
@@ -443,7 +510,9 @@ const angelica = new User({
   lastName: 'Pickles',
   userName: 'Angelica',
   email: 'sourandsweet@rugrats.com',
-  gifs: [gifTwenty]
+  gifs: [gifTwenty],
+  wins: 0,
+  losses: 0
 })
 
 const patrick = new User({
@@ -451,7 +520,9 @@ const patrick = new User({
   lastName: 'Star',
   userName: 'PinheadLarry',
   email: 'patrick@bikinibottom.com',
-  gifs: [gifTwentyOne]
+  gifs: [gifTwentyOne],
+  wins: 0,
+  losses: 0
 })
 
 const spongebob = new User({
@@ -459,7 +530,9 @@ const spongebob = new User({
   lastName: 'Squarepants',
   userName: 'Dirty Dan',
   email: 'spongebob@weeniehutjr.com',
-  gifs: [gifTwentyTwo]
+  gifs: [gifTwentyTwo],
+  wins: 0,
+  losses: 0
 })
 
 const squidward = new User({
@@ -467,7 +540,9 @@ const squidward = new User({
   lastName: 'Tentacles',
   userName: 'ClarinetMaster32',
   email: 'squidward@clarinetclub.com',
-  gifs: [gifTwentyThree]
+  gifs: [gifTwentyThree],
+  wins: 0,
+  losses: 0
 })
 
 const sandy = new User({
@@ -475,7 +550,9 @@ const sandy = new User({
   lastName: 'Cheeks',
   userName: 'TexasSquirrel',
   email: 'sandy@bikinibottom.com',
-  gifs: [gifTwentyFour]
+  gifs: [gifTwentyFour],
+  wins: 0,
+  losses: 0
 })
 
 const earl = new User({
@@ -483,7 +560,9 @@ const earl = new User({
   lastName: 'Hickey',
   userName: 'MyNameIsEarl',
   email: 'earl@trailerpark.com',
-  gifs: [gifTwentyFive]
+  gifs: [gifTwentyFive],
+  wins: 0,
+  losses: 0
 })
 
 const nathan = new User({
@@ -491,7 +570,9 @@ const nathan = new User({
   lastName: 'Drake',
   userName: 'NateDrake',
   email: 'ndrake@uncharted.com',
-  gifs: [gifTwentySix]
+  gifs: [gifTwentySix],
+  wins: 0,
+  losses: 0
 })
 
 const sully = new User({
@@ -499,7 +580,9 @@ const sully = new User({
   lastName: 'Sullivan',
   userName: 'SullyTheTreasureHunter',
   email: 'sully@uncharted.com',
-  gifs: [gifTwentySeven]
+  gifs: [gifTwentySeven],
+  wins: 0,
+  losses: 0
 })
 
 const masterChief = new User({
@@ -507,7 +590,9 @@ const masterChief = new User({
   lastName: 'Doe',
   userName: 'Master Chief',
   email: 'spartan117@usmc.com',
-  gifs: [gifTwentyEight]
+  gifs: [gifTwentyEight],
+  wins: 0,
+  losses: 0
 })
 // END OF USERS
 
@@ -517,8 +602,8 @@ const battleOne = new Battle({
   randomIndex: [],
   // playerOne: users[1],
   // playerTwo: users[1],
-  playerOneVotes: 0,
-  playerTwoVotes: 0
+  // playerOneVotes: 0,
+  // playerTwoVotes: 0
 
 });
 

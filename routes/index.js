@@ -117,14 +117,25 @@ router.get('/:battleId/onewin', (req, res) => {
     console.log(indexLength);
     //playerOne index
     const usersIndex = battle.randomIndex[indexLength-4];
+    //playerTwo index
+    const usersTwoIndex = battle.randomIndex[indexLength-3];
     //gifOne index
     const gifsIndex = battle.randomIndex[indexLength-2];
+    //gifTwo index
+    const gifsTwoIndex = battle.randomIndex[indexLength-1];
     const foundUser = battle.users[usersIndex];
     const foundGif = foundUser.gifs[gifsIndex];
+    const otherUser = battle.users[usersTwoIndex];
+    const otherGif = otherUser.gifs[gifsTwoIndex];
     console.log(foundGif);
-  
-    //increase gifOne votes by 1
-    foundGif.votes += 1;
+    //increase userONE wins by 1
+    foundUser.wins += 1;
+    //increase gifOne wins by 1
+    foundGif.wins += 1;
+    //increase userTWO Losses by 1
+    otherUser.losses += 1;
+    //increase gifTwo losses by 1
+    otherGif.losses += 1;
     battle.save();
    
     console.log('SUCCESS');
@@ -145,16 +156,27 @@ router.get('/:battleId/twowin', (req, res) => {
     //length of index values array pushed from duel page
     const indexLength = battle.randomIndex.length;
     console.log(indexLength);
-    //playerTWO index
-    const usersIndex = battle.randomIndex[indexLength-3];
-    //gifTWO index
-    const gifsIndex = battle.randomIndex[indexLength-1];
+    //playerOne index
+    const usersIndex = battle.randomIndex[indexLength-4];
+    //playerTwo index
+    const usersTwoIndex = battle.randomIndex[indexLength-3];
+    //gifOne index
+    const gifsIndex = battle.randomIndex[indexLength-2];
+    //gifTwo index
+    const gifsTwoIndex = battle.randomIndex[indexLength-1];
     const foundUser = battle.users[usersIndex];
     const foundGif = foundUser.gifs[gifsIndex];
+    const otherUser = battle.users[usersTwoIndex];
+    const otherGif = otherUser.gifs[gifsTwoIndex];
     console.log(foundGif);
-  
-    //increase gifOne votes by 1
-    foundGif.votes += 1;
+    //increase userONE losses by 1
+    foundUser.losses += 1;
+    //increase gifOne losses by 1
+    foundGif.losses += 1;
+    //increase userTWO wins by 1
+    otherUser.wins += 1;
+    //increase gifTwo wins by 1
+    otherGif.wins += 1;
     battle.save();
    
     console.log('SUCCESS');
@@ -164,4 +186,27 @@ router.get('/:battleId/twowin', (req, res) => {
   })
 
 });
+
+//Route to get user's/gif's leaderboard
+router.get('/:battleId/rankings', (req, res) => {
+  const battleId = req.params.battleId;
+
+  Battle.findById(battleId).then((battle) => {
+    const users = battle.users;
+    
+    
+    const usersRanked = users.sort((a,b) => {
+      return (b.wins - a.wins);
+    });
+    console.log(usersRanked);
+    res.render('homepage/rankings', {
+    battleId,
+    users: usersRanked,
+    })
+
+  //   for (var )
+  }).catch((error)=> {
+    console.log(error);
+  })
+})
 module.exports = router;
