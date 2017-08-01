@@ -4,19 +4,19 @@
 # Links
 
 Heroku Link:
-https://young-depths-90705.herokuapp.com/5980bf87df4791000415eabc
+https://young-depths-90705.herokuapp.com/* 
 
-Wireframe Link:
+* Wireframe Link:
 
-Duel Page - http://imgur.com/a/diWDN
+* Duel Page - http://imgur.com/a/diWDN
 
-User's List - http://imgur.com/a/iBuhK
+* User's List - http://imgur.com/a/iBuhK
 
-User's Profile - http://imgur.com/a/bEK6K
+* User's Profile - http://imgur.com/a/bEK6K
 
-User's Gifs - http://imgur.com/a/1dNZL
+* User's Gifs - http://imgur.com/a/1dNZL
 
-Leaderboard - http://imgur.com/a/9XGWN
+* Leaderboard - http://imgur.com/a/9XGWN
 
 ERD:
 http://imgur.com/a/p557n
@@ -31,29 +31,29 @@ GIFDuels is a website where users can sign up and upload their favorite gifs. On
 
 # User Stories
 
-Enter battle page.
-Click on a gif. Winner backgroud turns green. 2 new gif's appear.
-Win/Loss stats get updated.
-User Index has list of usernames.
-Create New User
-Edit/Delete Current User
-Add/Delete Gif
+* Enter battle page.
+* Click on a gif. Winner backgroud turns green. 2 new gif's appear.
+* Win/Loss stats get updated.
+* User Index has list of usernames.
+* Create New User
+* Edit/Delete Current User
+* Add/Delete Gif
 
 
-# Stretch Goals
+# Stretch Goals-
 
-Create a login.
-Multiple duels on the same screen.
-Add more statistics. (leaderboard updated by win/loss ratio)
-Search option for most popular gif.
+* Create a login.
+* Multiple duels on the same screen.
+* Add more statistics. (leaderboard updated by win/loss ratio)
+* Search option for most popular gif.
 
 # Technologies Used
-Bootstrap
-CSS 
-Express
-GIMP
-giphy.com
-Heroku
-HTML 5
-jQuery
-Mongoose
+* Bootstrap
+* CSS 
+* Express
+* GIMP
+* giphy.com
+* Heroku
+* HTML 5
+* jQuery
+* Mongoose
