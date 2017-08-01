@@ -424,8 +424,8 @@ const masterChief = new User({
 // create new battle
 const battleOne = new Battle({
   users: [jace, david, john, aaron, rick, morty, jerry, birdPerson, richard, jared, dinesh, gilfoyle, bigHead, erlich, ash, sly, carmen, summer, laurie, angelica, patrick, spongebob, squidward, sandy, earl, nathan, sully, masterChief],
-  // playerOne: users[1],
-  // playerTwo: users[1],
+  playerOne: users[1],
+  playerTwo: users[1],
   playerOneVotes: 0,
   playerTwoVotes: 0
 

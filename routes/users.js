@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   const userId = req.params.userId;
   Battle.findById(battleId).then((battle) => {
     console.log(battleId);
-  
+
 
 
     res.render(
@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
 
   }).then((battle) => {
     console.log("SUCC");
-    res.render("users/show", {
+    res.render("gifs/new", {
       battleId,
       userId: currentUser[0]._id,
       userName: currentUser[0].userName,
@@ -170,6 +170,6 @@ router.get('/:userId/delete', (req, res) => {
     console.log(error);
   });
 
-  
+
 })
 module.exports = router;
