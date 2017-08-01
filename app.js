@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 require('dotenv').config();
- mongoose.connect('mongodb://localhost/GIFduels2');
+//  mongoose.connect('mongodb://localhost/GIFduels2');
+mongoose.connect(process.env.MONGODB_URI);
 
 const index = require('./routes/index');
 const users = require('./routes/users');

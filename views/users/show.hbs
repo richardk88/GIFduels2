@@ -15,12 +15,13 @@
 
 <div class = "container">
  <h1>{{userName}}'s GIFS</h1>
-
+<div class="gifbox">
 {{#each gifs}}
 
-    <div><a href="/{{../battleId}}/users/{{../userId}}/{{this._id}}"><img src="{{this.imgUrl}}"></a></div>
+    <a href="/{{../battleId}}/users/{{../userId}}/{{this._id}}"><img src="{{this.imgUrl}}"></a></div>
 
 {{/each}}
+</div>
 </div>
 
 <div>

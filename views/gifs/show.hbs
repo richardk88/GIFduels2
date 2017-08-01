@@ -1,10 +1,11 @@
 
-
- <div><h1>Title: {{title}}</h1></div>
+<div class="container text-center">
+ <div><h1>{{title}}</h1></div>
 <div><img src="{{imgUrl}}"></div>
  <div>Wins: {{wins}}</div>
  <div>Losses: {{losses}}</div>
 
 
-<div><a href="/{{battleId}}/users/{{userId}}/{{gifId}}/delete">Delete GIF</a></div>
-<div><a href="/{{battleId}}/users/{{userId}}">Go back to {{userName}}'s GIFS</a></div>
+<div><a href="/{{battleId}}/users/{{userId}}/{{gifId}}/delete"><button class="btn btn-danger">Delete</button></a></div>
+<div><a href="/{{battleId}}/users/{{userId}}"><button class="btn btn-primary">Go back to {{userName}}'s GIFS</button></a></div>
+</div>
