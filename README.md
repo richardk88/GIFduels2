@@ -7,10 +7,15 @@ Heroku Link:
 https://young-depths-90705.herokuapp.com/5980bf87df4791000415eabc
 
 Wireframe Link:
+
 Duel Page - http://imgur.com/a/diWDN
+
 User's List - http://imgur.com/a/iBuhK
+
 User's Profile - http://imgur.com/a/bEK6K
+
 User's Gifs - http://imgur.com/a/1dNZL
+
 Leaderboard - http://imgur.com/a/9XGWN
 
 ERD:
