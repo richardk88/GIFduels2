@@ -29,14 +29,21 @@ router.post('/', (req, res) => {
     });
     foundUser.gifs.push(newGif);
     battle.save();
+    console.log(foundUser.firstName);
     console.log('SUCCESS');
     res.render('users/show', {
       battleId,
       userId,
       userName: foundUser.userName,
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName,
+      email: foundUser.email,
       gifs: foundUser.gifs,
+      wins: foundUser.wins,
+      losses: foundUser.losses,
       title: newGif.title,
       imgUrl: newGif.imgUrl
+
     })
   }).catch((error) => {
     console.log(error);

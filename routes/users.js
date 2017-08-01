@@ -118,7 +118,8 @@ router.get('/:userId/edit', (req, res) => {
       userName: foundUser.userName,
       firstName: foundUser.firstName,
       lastName: foundUser.lastName,
-      email: foundUser.email
+      email: foundUser.email,
+      gifs: foundUser.gifs
     });
   }).catch((error) => {
     console.log(error);
@@ -139,6 +140,7 @@ router.put('/:userId', (req, res) => {
     foundUser.firstName = req.body.firstName;
     foundUser.lastName = req.body.lastName;
     foundUser.email = req.body.email;
+    
 
     battle.save();
 
@@ -152,7 +154,8 @@ router.put('/:userId', (req, res) => {
       lastName: foundUser.lastName,
       email: foundUser.email,
       wins: foundUser.wins,
-      losses: foundUser.losses
+      losses: foundUser.losses,
+      gifs: foundUser.gifs
     });
   }).catch((error) => {
     console.log(error);
