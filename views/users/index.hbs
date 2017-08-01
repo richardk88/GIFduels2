@@ -1,10 +1,7 @@
 <h1>USERS</h1>
 
-<ul>{{#each users}}
+<ul class="users">{{#each users}}
 	<li><a href="/{{../battleId}}/users/{{this._id}}">{{this.userName}}</a></li>
 
 	{{/each}}
-	<a href="/{{battleId}}/users/new">Create a new user</a>
 </ul>
-<button type="submit" class="btn btn-default"><a href="/{{battleId}}">Back to GIF Duels</a>
-</button>

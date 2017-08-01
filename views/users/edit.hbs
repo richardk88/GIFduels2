@@ -2,7 +2,7 @@
 <h1>Edit User</h1>
 
 <div class="container" style="max-width:600px;margin:60px auto;">
-    <form action="/{{battleId}}/users" method="POST">
+    <form action="/{{battleId}}/users/{{userId}}?_method=PUT" method="POST">
         <div class="form-group">
            <label for="name">Username</label>
            <input type="text" class="form-control" name="userName" placeholder="Enter username">

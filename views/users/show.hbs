@@ -1,19 +1,21 @@
-<h1>USER: {{userId}}</h1>
+<h1>{{userName}}</h1>
 
-<div>Username: {{userName}}</div>
-<div>First Name: {{firstName}}</div>
-<div>Last Name: {{lastName}}</div>
-<div>Email: {{email}}</div>
-<div>
-    <a href="/{{battleId}}/users/{{userId}}/gifs">View Dank Gifs</a>
-</div>
+<div class = "profiletext">First Name: {{firstName}}</div>
+<div class = "profiletext">Last Name: {{lastName}}</div>
+<div class = "profiletext">Email: {{email}}</div>
+
+<br/>
 
 <div>
-    <a href="/{{battleId}}/users">Back to User's index</a>
+    <a href="/{{battleId}}/users/{{userId}}/gifs"><button class="btn btn-primary">View Dank Gifs</button></a>
+</div>
+
+<div>
+    <a href="/{{battleId}}/users"><button class="btn btn-primary">Back to User's index</button></a>
 </div>
 <div>
-    <a href="/{{battleId}}/users/{{userId}}/delete">Delete</a>
+    <a href="/{{battleId}}/users/{{userId}}/delete"><button class="btn btn-danger">Delete</button></a>
 </div>
 <div>
-    <a href="/{{battleId}}/users/{{userId}}/edit">Edit</a>
+    <a href="/{{battleId}}/users/{{userId}}/edit"><button class="btn btn-warning">Edit</button></a>
 </div>

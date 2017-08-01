@@ -20,7 +20,11 @@ h1{
 }
 
 img.animated-gif {
-  width: 405px;
+  width: 350px;
+}
+
+.btn{
+    margin-bottom: 10px;
 }
 
 .edituser, .newedit {
@@ -46,14 +50,31 @@ img.animated-gif {
   text-align: center;
 }
 
+.navbar-default {
+    background-color: #604569;
+    border-color: #604569;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #f3e8e0
+}
 .playerfonts {
   font-size: 30px;
   text-align: center;
 }
 
+.profiletext{
+    font-size: 20px;
+}
+
 .the {
   display: flex;
   align-content: space-between;
+}
+
+.users{
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .vs {
