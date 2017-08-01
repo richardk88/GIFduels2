@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
 
   }).then((battle) => {
     console.log("SUCC");
-    res.render("users/show", {
+    res.render("gifs/new", {
       battleId,
       userId: currentUser[0]._id,
       userName: currentUser[0].userName,

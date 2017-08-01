@@ -8,6 +8,10 @@ const router = express.Router({
 const Gif = require('../models/gif');
 const User = require('../models/user');
 const Battle = require('../models/battle')
+//users' index
+var firstNumber;
+var secondNumber;
+//GIFs' index
 var gifOneIndex;
 var gifTwoIndex;
 
@@ -45,10 +49,8 @@ router.get('/', function (req, res) {
 //show route
 router.get('/:battleId', (req, res) => {
   const battleId = req.params.battleId;
-  var firstNumber;
-  var secondNumber;
-  var thirdNumber;
-  var fourthNumber;
+
+
 //random index for users
   function randomNumber(arrayOne) {
     do {
@@ -69,6 +71,7 @@ router.get('/:battleId', (req, res) => {
     const gifOne = battles[0].users[firstNumber].gifs
     const gifTwo = battles[0].users[secondNumber].gifs
    
+    console.log("BATTLES", battles[0]);
 
     gifOneIndex = Math.floor(Math.random() * gifOne.length);
     gifTwoIndex = Math.floor(Math.random() * gifTwo.length);
@@ -88,24 +91,22 @@ router.get('/:battleId', (req, res) => {
   }).catch((error)=>{
     console.log(error);
   })
-
+  
 })
-//Put route to increment votes for Player One GIF
 
-// router.get('/:battleId/userone', (req, res) => {
+// Put route to increment votes for Player One GIF
+
+// router.put('/:battleId/userone', (req, res) => {
 //   const battleId = req.params.battleId;
-//   var userOneId;
-  
 
 
-  
+
 //   Battle.findByIdAndUpdate(battleId).then((battle) => {
-//     console.log(battle);
-//     const foundUserOne = battle.playerOne.find((user) => {
-//       return user.id === userOneId;
-//     });
+//     // console.log(battle);
+//     const foundUserOne = battle.users[firstNumber];
 //     const gifOne = foundUserOne.gifs[gifOneIndex];
-//     console.log(foundUserOne)
+    
+//     console.log(foundUserOne.gifs)
   
 //     gifOne.votes += 1;
 //     battle.save();

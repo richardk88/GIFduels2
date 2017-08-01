@@ -1,24 +1,45 @@
- body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
 a {
-  color: #00B7FF;
-} 
+  color: white;
+}
 
-.home-page-title {
-  font: 50px;
+a:hover {
+  color: #f03523;
+  text-decoration: underline;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #604569;
+}
+
+.edituser, .newedit {
   text-align: center;
+  margin-top: 15%;
+  border: dashed; 
+  border-color: palevioletred;
+}
 
+img.animated-gif {
+  width: 410px;
+  height: auto;
 }
 
 .duel {
   text-align: center;
 }
 
-.vs {
-  font: 200px;
+.footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 100px;
+  width: 100%;
+  color: white;
+  text-align: center;
 }
 
 .gif {
@@ -26,3 +47,29 @@ a {
   height: 300px;
 }
 
+.home-page-title {
+  text-align: center;
+}
+
+.playerfonts {
+  font-size: 30px;
+  text-align: center;
+}
+
+.the {
+  display: flex;
+  align-content: space-between;
+}
+
+.vs {
+  padding-top: 46px;
+  padding-left: 60px;
+  width: 300px;
+}
+
+.wrapper {
+  display: block;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 112px;
+}
