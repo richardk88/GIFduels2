@@ -195,7 +195,7 @@ router.get('/:battleId/rankings', (req, res) => {
   Battle.findById(battleId).then((battle) => {
     const users = battle.users;
 
-
+//Sort ALL users in ascending order (wins)
     const usersRanked = users.sort((a,b) => {
       return (b.wins - a.wins);
     });
