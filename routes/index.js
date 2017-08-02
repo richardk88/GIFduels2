@@ -8,10 +8,7 @@ const router = express.Router({
 const Gif = require('../models/gif');
 const User = require('../models/user');
 const Battle = require('../models/battle')
-var gifOneIdNumber;
-var gifTwoIdNumber;
-var userOneIdNumber;
-var userTwoIdNumber;
+
 
 //Opening Page ROUTE USELESS
 router.get('/', function (req, res) {
