@@ -128,6 +128,7 @@ router.get('/:battleId/onewin', (req, res) => {
     const otherUser = battle.users[usersTwoIndex];
     const otherGif = otherUser.gifs[gifsTwoIndex];
     console.log(foundGif);
+    /**PUSH USER AND GIF INDEX VALUES FOR LEADERBOARD ROUTE */
     //increase userONE wins by 1
     foundUser.wins += 1;
     //increase gifOne wins by 1
@@ -204,7 +205,7 @@ router.get('/:battleId/rankings', (req, res) => {
     users: usersRanked,
     })
 
-  //   for (var )
+  
   }).catch((error)=> {
     console.log(error);
   })
